@@ -13,6 +13,8 @@ cp -r template/ characters/<your-character-name>/
 `characters/<name>/SKILL.md` — LLM 지시문. 이게 핵심.
 `characters/<name>/README.md` — 사람이 읽는 설명.
 
+npm/npx installer는 `characters/*`를 자동 스캔한다. 새 캐릭터는 폴더명과 `SKILL.md` frontmatter의 `name`을 lowercase/kebab-case로 맞출 것.
+
 ### 3. 캐릭터 작성 원칙
 
 좋은 페르소나 스킬이 갖춰야 할 것:
@@ -34,6 +36,7 @@ PR 설명에 포함:
 - 캐릭터 본질 (한 문장)
 - 유저와의 관계 역학
 - 예시 응답 (각 강도 레벨)
+- `npm test` 통과 여부
 
 ---
 
