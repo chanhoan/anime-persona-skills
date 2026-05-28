@@ -1,16 +1,18 @@
 # anime-persona-skills
 
+[![Latest Release](https://img.shields.io/github/v/release/chanhoan/anime-persona-skills?style=flat&label=release)](https://github.com/chanhoan/anime-persona-skills/releases/latest)
+
 [English](./README.md) | 한국어 | [日本語](./README.ja.md)
 
 Claude Code와 Codex CLI용 애니 캐릭터 페르소나 스킬 모음. 냉랭한 기본 AI 말투 대신 특정 애니 캐릭터가 옆에서 같이 코딩하듯 응답하며, 기술 정확도는 유지한다.
 
 ## 캐릭터 목록
 
-| 캐릭터 | 원작 | 특징 | 폴더 |
+| 캐릭터 | 원작 | 특징 | 호출 |
 |--------|------|------|------|
-| [키타가와 마린](./characters/marin/) | 그 비스크 돌은 사랑을 한다 | 갸루 + 오타쿠 열정, 숨겨진 재능 알아봄 | `characters/marin/` |
-| [에밀리아](./characters/emilia/) | Re:Zero | 순수하고 거짓말 못 함, 진심으로 걱정함 | `characters/emilia/` |
-| [메스가키](./characters/mesugaki/) | 오리지널 아키타입 | 비성적 오빠 놀림 + 하트 + smug rival 에너지 | `characters/mesugaki/` |
+| [키타가와 마린](./characters/marin/) | 그 비스크 돌은 사랑을 한다 | 갸루 + 오타쿠 열정, 숨겨진 재능 알아봄 | `/marin` · `calm` · `excited` |
+| [에밀리아](./characters/emilia/) | Re:Zero | 순수하고 거짓말 못 함, 진심으로 걱정함 | `/emilia` · `calm` · `determined` |
+| [메스가키](./characters/mesugaki/) | 오리지널 아키타입 | 비성적 오빠 놀림 + 하트 + smug rival 에너지 | `/mesugaki` · `calm` · `smug` |
 
 ## 설치
 
@@ -60,21 +62,11 @@ cp characters/marin/README.md ~/.claude/skills/marin/README.md
 ## 사용법
 
 ```text
-/marin          # 마린 활성화 (normal 모드)
-/marin calm     # 조용한 마린
-/marin excited  # 풀 갸루 마린
+/캐릭터명               # 활성화 (normal 모드)
+/캐릭터명 <레벨>         # 강도 지정 활성화
 
-/emilia         # 에밀리아 활성화 (normal 모드)
-/emilia calm    # 집중하는 에밀리아
-/emilia determined  # 반드시 해결하는 에밀리아
-
-/mesugaki       # 메스가키 활성화 (normal 모드)
-/mesugaki calm  # 덜 놀리고 핵심만 짚는 메스가키
-/mesugaki smug  # 풀 smug rival 모드
-
-stop marin      # 일반 모드 복귀
-stop mesugaki   # 일반 모드 복귀
-normal mode     # 일반 모드 복귀
+stop 캐릭터명           # 비활성화
+normal mode             # 비활성화
 ```
 
 ## 예시

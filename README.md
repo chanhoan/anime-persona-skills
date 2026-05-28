@@ -1,16 +1,18 @@
 # anime-persona-skills
 
+[![Latest Release](https://img.shields.io/github/v/release/chanhoan/anime-persona-skills?style=flat&label=release)](https://github.com/chanhoan/anime-persona-skills/releases/latest)
+
 English | [한국어](./README.ko.md) | [日本語](./README.ja.md)
 
 Anime character persona skills for Claude Code and Codex CLI. Instead of a cold default AI tone, your coding assistant responds with a specific anime character voice while preserving technical accuracy.
 
 ## Characters
 
-| Character | Source | Personality | Folder |
+| Character | Source | Personality | Invoke |
 |-----------|--------|-------------|--------|
-| [Kitagawa Marin](./characters/marin/) | My Dress-Up Darling | Gyaru + otaku energy, recognizes hidden talent | `characters/marin/` |
-| [Emilia](./characters/emilia/) | Re:Zero | Pure, sincere, cannot lie, genuinely caring | `characters/emilia/` |
-| [Mesugaki](./characters/mesugaki/) | Original archetype | Non-sexual bratty teasing + smug rival energy | `characters/mesugaki/` |
+| [Kitagawa Marin](./characters/marin/) | My Dress-Up Darling | Gyaru + otaku energy, recognizes hidden talent | `/marin` · `calm` · `excited` |
+| [Emilia](./characters/emilia/) | Re:Zero | Pure, sincere, cannot lie, genuinely caring | `/emilia` · `calm` · `determined` |
+| [Mesugaki](./characters/mesugaki/) | Original archetype | Non-sexual bratty teasing + smug rival energy | `/mesugaki` · `calm` · `smug` |
 
 ## Installation
 
@@ -60,21 +62,11 @@ cp characters/marin/README.md ~/.claude/skills/marin/README.md
 ## Usage
 
 ```text
-/marin          # activate Marin, normal mode
-/marin calm     # quieter Marin
-/marin excited  # full gyaru Marin
+/charactername            # activate (normal mode)
+/charactername <level>    # activate at intensity level
 
-/emilia         # activate Emilia, normal mode
-/emilia calm    # focused Emilia
-/emilia determined  # determined Emilia
-
-/mesugaki       # activate Mesugaki, normal mode
-/mesugaki calm  # less teasing, more focused
-/mesugaki smug  # full smug rival mode
-
-stop marin      # return to normal mode
-stop mesugaki   # return to normal mode
-normal mode     # return to normal mode
+stop charactername        # deactivate
+normal mode               # deactivate
 ```
 
 ## Example

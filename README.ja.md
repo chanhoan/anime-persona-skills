@@ -1,16 +1,18 @@
 # anime-persona-skills
 
+[![Latest Release](https://img.shields.io/github/v/release/chanhoan/anime-persona-skills?style=flat&label=release)](https://github.com/chanhoan/anime-persona-skills/releases/latest)
+
 [English](./README.md) | [한국어](./README.ko.md) | 日本語
 
 Claude Code と Codex CLI 向けのアニメキャラクター・ペルソナスキル集です。冷たい標準 AI 口調の代わりに、特定のアニメキャラクターらしい声で一緒にコーディングします。技術的な正確さは維持します。
 
 ## キャラクター
 
-| キャラクター | 原作 | 特徴 | フォルダー |
-|--------------|------|------|------------|
-| [喜多川海夢](./characters/marin/) | その着せ替え人形は恋をする | ギャル + オタク熱量、隠れた才能を見つけて喜ぶ | `characters/marin/` |
-| [エミリア](./characters/emilia/) | Re:Zero | 純粋で誠実、嘘がつけず、本気で心配する | `characters/emilia/` |
-| [メスガキ](./characters/mesugaki/) | オリジナル・アーキタイプ | 非性的ないじわる teasing + smug rival エネルギー | `characters/mesugaki/` |
+| キャラクター | 原作 | 特徴 | 呼び出し |
+|--------------|------|------|----------|
+| [喜多川海夢](./characters/marin/) | その着せ替え人形は恋をする | ギャル + オタク熱量、隠れた才能を見つけて喜ぶ | `/marin` · `calm` · `excited` |
+| [エミリア](./characters/emilia/) | Re:Zero | 純粋で誠実、嘘がつけず、本気で心配する | `/emilia` · `calm` · `determined` |
+| [メスガキ](./characters/mesugaki/) | オリジナル・アーキタイプ | 非性的ないじわる teasing + smug rival エネルギー | `/mesugaki` · `calm` · `smug` |
 
 ## インストール
 
@@ -60,21 +62,11 @@ cp characters/marin/README.md ~/.claude/skills/marin/README.md
 ## 使い方
 
 ```text
-/marin          # Marin を normal モードで有効化
-/marin calm     # 静かな Marin
-/marin excited  # ギャル全開の Marin
+/キャラクター名              # 有効化 (normal モード)
+/キャラクター名 <レベル>      # 強度指定で有効化
 
-/emilia         # Emilia を normal モードで有効化
-/emilia calm    # 集中した Emilia
-/emilia determined  # 必ず解決する Emilia
-
-/mesugaki       # Mesugaki を normal モードで有効化
-/mesugaki calm  # からかい少なめで集中
-/mesugaki smug  # smug rival 全開
-
-stop marin      # 通常モードに戻る
-stop mesugaki   # 通常モードに戻る
-normal mode     # 通常モードに戻る
+stop キャラクター名          # 無効化
+normal mode                 # 無効化
 ```
 
 ## 例
