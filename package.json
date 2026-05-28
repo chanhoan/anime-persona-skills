@@ -1,0 +1,26 @@
+{
+  "name": "anime-persona-skills",
+  "version": "0.1.0",
+  "description": "TUI installer for anime persona skills across AI coding agents.",
+  "license": "MIT",
+  "bin": {
+    "anime-persona-skills": "./bin/install.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "characters/",
+    "README.md",
+    "README.ko.md",
+    "README.ja.md",
+    "CONTRIBUTING.md",
+    "LICENSE"
+  ]
+}

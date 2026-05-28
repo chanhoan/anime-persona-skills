@@ -1,66 +1,93 @@
 # anime-persona-skills
 
-Claude Code 페르소나 스킬 모음. 냉랭한 AI 말투 대신 애니 캐릭터가 옆에서 같이 코딩해준다.
+English | [한국어](./README.ko.md) | [日本語](./README.ja.md)
 
-## 캐릭터 목록
+Anime character persona skills for Claude Code and Codex CLI. Instead of a cold default AI tone, your coding assistant responds with a specific anime character voice while preserving technical accuracy.
 
-| 캐릭터 | 원작 | 특징 | 폴더 |
-|--------|------|------|------|
-| [키타가와 마린](./characters/marin/) | 그 비스크 돌은 사랑을 한다 | 갸루 + 오타쿠 열정, 숨겨진 재능 알아봄 | `characters/marin/` |
-| [에밀리아](./characters/emilia/) | Re:Zero | 순수하고 거짓말 못 함, 진심으로 걱정함 | `characters/emilia/` |
+## Characters
 
-## 설치
+| Character | Source | Personality | Folder |
+|-----------|--------|-------------|--------|
+| [Kitagawa Marin](./characters/marin/) | My Dress-Up Darling | Gyaru + otaku energy, recognizes hidden talent | `characters/marin/` |
+| [Emilia](./characters/emilia/) | Re:Zero | Pure, sincere, cannot lie, genuinely caring | `characters/emilia/` |
 
-### 요구사항
+## Installation
 
-- [Claude Code](https://claude.ai/code) CLI
-- ECC (Extreme Coding Companion) 스킬 로더
+### Requirements
 
-### 방법
+- [Claude Code](https://claude.ai/code) CLI or Codex CLI
+- ECC (Extreme Coding Companion) skill loader
+- Node.js 18+ for npm/npx installation
 
-1. 원하는 캐릭터 폴더의 `SKILL.md`를 복사
-2. `~/.claude/skills/<character-name>/SKILL.md` 에 저장
-3. Claude Code에서 `/skillname` 으로 호출
+### npm/npx TUI install
+
+Run the installer directly from GitHub. The TUI lets you select multiple AI agents and multiple characters.
 
 ```bash
-# 예시: 마린 설치
+npx -y github:chanhoan/anime-persona-skills
+```
+
+Use flags for automation or quick installs.
+
+```bash
+# Install Marin for Codex only
+npx -y github:chanhoan/anime-persona-skills -- --agent codex --character marin
+
+# Preview installing every character for Claude Code and Codex
+npx -y github:chanhoan/anime-persona-skills -- --all-agents --all-characters --dry-run
+```
+
+Supported targets:
+
+- `claude` — `~/.claude/skills/<character-name>/`
+- `codex` — `~/.codex/skills/<character-name>/`
+
+Existing files are skipped by default. Add `--force` to overwrite them.
+
+### Manual install
+
+1. Copy the character's `SKILL.md` and `README.md`.
+2. Place them under `~/.claude/skills/<character-name>/` or `~/.codex/skills/<character-name>/`.
+3. Invoke the skill with `/skillname` in Claude Code or Codex.
+
+```bash
 mkdir -p ~/.claude/skills/marin
 cp characters/marin/SKILL.md ~/.claude/skills/marin/SKILL.md
 cp characters/marin/README.md ~/.claude/skills/marin/README.md
 ```
 
-## 사용법
+## Usage
 
+```text
+/marin          # activate Marin, normal mode
+/marin calm     # quieter Marin
+/marin excited  # full gyaru Marin
+
+/emilia         # activate Emilia, normal mode
+/emilia calm    # focused Emilia
+/emilia determined  # determined Emilia
+
+stop marin      # return to normal mode
+normal mode     # return to normal mode
 ```
-/marin          # 마린 활성화 (normal 모드)
-/marin calm     # 조용한 마린
-/marin excited  # 풀 갸루 마린
 
-/emilia         # 에밀리아 활성화 (normal 모드)
-/emilia calm    # 집중하는 에밀리아
-/emilia determined  # 반드시 해결하는 에밀리아
+## Example
 
-stop marin      # 일반 모드 복귀
-normal mode     # 일반 모드 복귀
-```
+Question: "Why does my React component keep re-rendering?"
 
-## 예시
+**Default AI:**
+> The component re-renders because a new object reference is created on every render.
 
-질문: "리액트 컴포넌트 왜 자꾸 리렌더링돼?"
-
-**일반 AI:**
-> 컴포넌트가 리렌더링되는 이유는 렌더링마다 새로운 객체 참조가 생성되기 때문입니다.
-
-**마린 (normal):**
+**Marin (normal):**
 > 어 그거！ 인라인 객체 prop이 렌더링마다 새 ref 만드는 거야～ `useMemo` 써봐！
 
-**에밀리아 (normal):**
+**Emilia (normal):**
 > 진짜~아, 그거 인라인 객체 prop이 렌더링마다 새 참조를 만들어서 그래. `useMemo` 써봐, 같이 봐줄게.
 
-## 기여
+## Contributing
 
-새 캐릭터 추가하거나 기존 캐릭터 개선하고 싶으면 → [CONTRIBUTING.md](./CONTRIBUTING.md)
+Want to add a character or improve an existing one? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-## 라이선스
+## License
 
 MIT
