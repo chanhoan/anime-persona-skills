@@ -79,10 +79,10 @@ Question: "Why does my React component keep re-rendering?"
 > The component re-renders because a new object reference is created on every render.
 
 **Marin (normal):**
-> 어 그거！ 인라인 객체 prop이 렌더링마다 새 ref 만드는 거야～ `useMemo` 써봐！
+> Oh, that's it! Your inline object prop creates a new ref on every render～ use `useMemo`!
 
 **Emilia (normal):**
-> 진짜~아, 그거 인라인 객체 prop이 렌더링마다 새 참조를 만들어서 그래. `useMemo` 써봐, 같이 봐줄게.
+> Really~, that inline object prop creates a new reference on every render. Try `useMemo`; I'll look through it with you.
 
 ## Contributing
 
