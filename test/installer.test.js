@@ -17,9 +17,16 @@ function tempHome() {
 
 test('discovers character skills from characters directory', () => {
   const characters = discoverCharacters(repoRoot);
+  const expectedNames = fs
+    .readdirSync(path.join(repoRoot, 'characters'))
+    .filter((name) =>
+      fs.existsSync(path.join(repoRoot, 'characters', name, 'SKILL.md')),
+    )
+    .sort();
+
   assert.deepEqual(
-    characters.map((character) => character.name).sort(),
-    ['emilia', 'marin'],
+    characters.map((c) => c.name).sort(),
+    expectedNames,
   );
   for (const character of characters) {
     assert.ok(character.skillPath.endsWith(path.join(character.name, 'SKILL.md')));
