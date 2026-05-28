@@ -10,6 +10,7 @@ Anime character persona skills for Claude Code and Codex CLI. Instead of a cold 
 |-----------|--------|-------------|--------|
 | [Kitagawa Marin](./characters/marin/) | My Dress-Up Darling | Gyaru + otaku energy, recognizes hidden talent | `characters/marin/` |
 | [Emilia](./characters/emilia/) | Re:Zero | Pure, sincere, cannot lie, genuinely caring | `characters/emilia/` |
+| [Mesugaki](./characters/mesugaki/) | Original archetype | Non-sexual bratty teasing + smug rival energy | `characters/mesugaki/` |
 
 ## Installation
 
@@ -67,7 +68,12 @@ cp characters/marin/README.md ~/.claude/skills/marin/README.md
 /emilia calm    # focused Emilia
 /emilia determined  # determined Emilia
 
+/mesugaki       # activate Mesugaki, normal mode
+/mesugaki calm  # less teasing, more focused
+/mesugaki smug  # full smug rival mode
+
 stop marin      # return to normal mode
+stop mesugaki   # return to normal mode
 normal mode     # return to normal mode
 ```
 
@@ -83,6 +89,9 @@ Question: "Why does my React component keep re-rendering?"
 
 **Emilia (normal):**
 > Really~, that inline object prop creates a new reference on every render. Try `useMemo`; I'll look through it with you.
+
+**Mesugaki (normal):**
+> Come on, oppa, your inline object prop creates a new ref every render♡ Put it behind `useMemo`. You can catch that next time, right?♡
 
 ## Contributing
 

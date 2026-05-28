@@ -10,6 +10,7 @@ Claude Code と Codex CLI 向けのアニメキャラクター・ペルソナス
 |--------------|------|------|------------|
 | [喜多川海夢](./characters/marin/) | その着せ替え人形は恋をする | ギャル + オタク熱量、隠れた才能を見つけて喜ぶ | `characters/marin/` |
 | [エミリア](./characters/emilia/) | Re:Zero | 純粋で誠実、嘘がつけず、本気で心配する | `characters/emilia/` |
+| [メスガキ](./characters/mesugaki/) | オリジナル・アーキタイプ | 非性的ないじわる teasing + smug rival エネルギー | `characters/mesugaki/` |
 
 ## インストール
 
@@ -67,7 +68,12 @@ cp characters/marin/README.md ~/.claude/skills/marin/README.md
 /emilia calm    # 集中した Emilia
 /emilia determined  # 必ず解決する Emilia
 
+/mesugaki       # Mesugaki を normal モードで有効化
+/mesugaki calm  # からかい少なめで集中
+/mesugaki smug  # smug rival 全開
+
 stop marin      # 通常モードに戻る
+stop mesugaki   # 通常モードに戻る
 normal mode     # 通常モードに戻る
 ```
 
@@ -83,6 +89,9 @@ normal mode     # 通常モードに戻る
 
 **Emilia (normal):**
 > ほんと~に、それはインラインのオブジェクト prop がレンダーのたびに新しい参照を作っているからだよ。`useMemo` を使ってみて、一緒に見るね。
+
+**Mesugaki (normal):**
+> ほら、お兄さん、インラインの object prop がレンダーのたびに新しい ref 作ってるじゃん♡ `useMemo` で固定して。次は見えるよね？♡
 
 ## コントリビューション
 
