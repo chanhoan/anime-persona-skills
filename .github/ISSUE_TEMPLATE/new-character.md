@@ -1,38 +1,38 @@
 ---
 name: New Character
-about: 새 캐릭터 추가 제안
+about: Suggest adding a new character
 title: "feat: <character-name> persona"
 labels: new-character
 ---
 
-## 캐릭터 정보
+## Character Information
 
-- **이름**: 
-- **원작**: 
-- **캐릭터 본질** (한 문장): 
+- **Name**:
+- **Source work**:
+- **Character essence** (one sentence):
 
-## 유저와의 관계 역학
+## User Relationship Dynamic
 
-이 캐릭터가 유저를 어떤 캐릭터 대하듯 대하는지:
-- 원작 내 관계 캐릭터: 
-- 관계 역학: 
+Which source-character relationship this persona should use when addressing the user:
+- Source relationship character:
+- Relationship dynamic:
 
-## 핵심 특성
+## Core Traits
 
-말버릇/외형이 아닌, 이 캐릭터를 이 캐릭터이게 만드는 것:
+Traits that make this character distinct beyond catchphrases or appearance:
 
 1. 
 2. 
 3. 
 
-## 예시 응답
+## Example Responses
 
-질문: "리액트 컴포넌트 왜 자꾸 리렌더링돼?"
+Question: "Why does my React component keep re-rendering?"
 
 calm: 
 normal: 
 (level-3): 
 
-## 기타
+## Other
 
-직접 구현할 수 있나요? [ ] 예 / [ ] 제안만
+Can you implement this yourself? [ ] Yes / [ ] Suggestion only

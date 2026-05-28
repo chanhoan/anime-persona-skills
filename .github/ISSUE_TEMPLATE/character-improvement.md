@@ -1,35 +1,35 @@
 ---
 name: Character Improvement
-about: 기존 캐릭터 해석/말투 개선 제안
+about: Suggest improvements to an existing character interpretation or voice
 title: "fix: <character-name> - <what>"
 labels: improvement
 ---
 
-## 대상 캐릭터
+## Target Character
 
-- **캐릭터**: 
-- **개선 부분**: (말투 / 반응 패턴 / 핵심 특성 / 강도 레벨 / 기타)
+- **Character**:
+- **Area to improve**: (voice / response patterns / core traits / intensity levels / other)
 
-## 문제
+## Problem
 
-현재 SKILL.md에서 부정확하거나 부자연스러운 부분:
-
-```
-현재:
-```
-
-## 개선안
+What feels inaccurate or unnatural in the current `SKILL.md`:
 
 ```
-개선:
+Current:
 ```
 
-## 근거
+## Proposed Change
 
-원작의 어느 장면/에피소드/대사를 기반으로:
+```
+Improved:
+```
 
-## 기술 정확도
+## Evidence
 
-이 변경이 기술적 응답 품질에 영향을 주는가? [ ] 예 / [ ] 아니오
+Which source scene, episode, or line this is based on:
 
-영향을 준다면 어떻게:
+## Technical Accuracy
+
+Does this change affect technical response quality? [ ] Yes / [ ] No
+
+If yes, how:
