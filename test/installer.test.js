@@ -69,6 +69,46 @@ test('builds Claude and Codex install tasks for selected characters', () => {
   );
 });
 
+test('honors Claude and Codex config environment directories by default', () => {
+  const characters = discoverCharacters(repoRoot);
+  const home = tempHome();
+  const oldClaudeConfigDir = process.env.CLAUDE_CONFIG_DIR;
+  const oldCodexHome = process.env.CODEX_HOME;
+  process.env.CLAUDE_CONFIG_DIR = path.join(home, 'custom-claude');
+  process.env.CODEX_HOME = path.join(home, 'custom-codex');
+
+  try {
+    const tasks = buildInstallTasks({
+      repoRoot,
+      homeDir: home,
+      selectedAgents: ['claude', 'codex'],
+      selectedCharacters: ['marin'],
+      characters,
+    });
+
+    assert.deepEqual(
+      tasks.map((task) => path.relative(home, task.dest)).sort(),
+      [
+        'custom-claude/skills/marin/README.md',
+        'custom-claude/skills/marin/SKILL.md',
+        'custom-codex/skills/marin/README.md',
+        'custom-codex/skills/marin/SKILL.md',
+      ],
+    );
+  } finally {
+    restoreEnv('CLAUDE_CONFIG_DIR', oldClaudeConfigDir);
+    restoreEnv('CODEX_HOME', oldCodexHome);
+  }
+});
+
+function restoreEnv(name, value) {
+  if (value === undefined) {
+    delete process.env[name];
+  } else {
+    process.env[name] = value;
+  }
+}
+
 test('dry-run reports tasks without writing files', () => {
   const characters = discoverCharacters(repoRoot);
   const home = tempHome();
