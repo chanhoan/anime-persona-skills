@@ -1,58 +1,59 @@
-# 기여 가이드
+# Contributing
 
-## 새 캐릭터 추가
+## Adding a New Character
 
-### 1. 템플릿 복사
+### 1. Copy the template
 
 ```bash
 cp -r template/ characters/<your-character-name>/
 ```
 
-### 2. 파일 수정
+### 2. Edit the files
 
-`characters/<name>/SKILL.md` — LLM 지시문. 이게 핵심.
-`characters/<name>/README.md` — 사람이 읽는 설명.
+`characters/<name>/SKILL.md` — LLM instruction document. This is the core.
+`characters/<name>/README.md` — Human-readable description.
 
-npm/npx installer는 `characters/*`를 자동 스캔한다. 새 캐릭터는 폴더명과 `SKILL.md` frontmatter의 `name`을 lowercase/kebab-case로 맞출 것.
+The npm/npx installer auto-scans `characters/*`. Make sure the folder name and the `name` field in `SKILL.md` frontmatter are lowercase/kebab-case and match.
 
-### 3. 캐릭터 작성 원칙
+### 3. Writing principles
 
-좋은 페르소나 스킬이 갖춰야 할 것:
+What makes a good persona skill:
 
-- **캐릭터 본질 먼저**: 말버릇보다 *왜 그 사람이 그 사람인지*. 마린은 갸루이기 전에 숨겨진 재능을 진심으로 알아보는 사람. 에밀리아는 진짜~아 말버릇 이전에 거짓말 못 하는 사람.
-- **유저를 특정 캐릭터 대하듯**: 마린은 유저를 고죠 대하듯, 에밀리아는 수바루 대하듯. 유저와의 관계 역학을 정의할 것.
-- **기술 정확도 유지**: 페르소나가 기술 품질을 희생하면 안 됨. 틀린 코드를 귀엽게 전달하는 건 나쁜 스킬.
-- **Auto-Clarity 규칙**: 보안 경고, 돌이킬 수 없는 작업은 페르소나 잠시 해제하고 명확하게 전달.
-- **강도 레벨**: 최소 2단계 (calm/normal 또는 이에 준하는 것). 상황에 따라 auto-switch 룰 정의.
+- **Essence first**: Define *why this person is this person* before defining how they speak. Marin sees hidden talent before she's a gyaru. Emilia cannot lie before she says "really~".
+- **Treat the user like a specific character**: Marin treats the user like Gojo, Emilia like Subaru. Define the relationship dynamic.
+- **Keep technical accuracy**: The persona must never degrade the quality of technical answers. Delivering wrong code in a cute way is a bad skill.
+- **Auto-Clarity rules**: Security warnings and irreversible operations must temporarily drop the persona and communicate clearly.
+- **Intensity levels**: Minimum 2 levels (calm/normal or equivalent). Define auto-switch conditions per level.
+- **Multilingual**: Write SKILL.md in English. Define speech quirks as rules, not hardcoded per-language lists — let the model adapt to the natural script form of whatever language the user speaks.
 
-### 4. PR 제출
+### 4. Submit a PR
 
 ```
 feat: add <character-name> persona
 ```
 
-PR 설명에 포함:
-- 원작 작품
-- 캐릭터 본질 (한 문장)
-- 유저와의 관계 역학
-- 예시 응답 (각 강도 레벨)
-- `npm test` 통과 여부
+Include in the PR description:
+- Source work
+- Character essence (one sentence)
+- User relationship dynamic
+- Example responses at each intensity level
+- `npm test` passing
 
 ---
 
-## 기존 캐릭터 개선
+## Improving an Existing Character
 
-캐릭터 해석이 더 정확해질 수 있거나, 말투/반응 패턴이 더 자연스러워질 수 있다면 PR 환영.
+PRs welcome if the character interpretation can be more accurate, or if speech/reaction patterns can feel more natural.
 
-개선 PR 조건:
-- 변경 이유 설명 (원작 어느 장면/에피소드 근거)
-- 기존 예시와 개선된 예시 나란히 제시
-- 기술 정확도 손상 없음 확인
+Requirements:
+- Explain the reason for the change (cite a specific source scene or episode)
+- Show old example vs. improved example side by side
+- Confirm technical accuracy is not degraded
 
 ---
 
-## 이슈
+## Issues
 
-- 새 캐릭터 제안: `New Character` 이슈 템플릿 사용
-- 캐릭터 개선 제안: `Character Improvement` 이슈 템플릿 사용
-- 버그 (말투 이상, 기술 오류): 자유 형식으로
+- New character suggestion: use the `New Character` issue template
+- Character improvement suggestion: use the `Character Improvement` issue template
+- Bugs (wrong speech pattern, technical error): open a free-form issue
