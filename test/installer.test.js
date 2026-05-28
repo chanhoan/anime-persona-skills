@@ -7,6 +7,7 @@ const test = require('node:test');
 const { discoverCharacters } = require('../src/catalog');
 const { parseArgs } = require('../src/cli');
 const { buildInstallTasks, executeTasks } = require('../src/install');
+const { checkboxSelect } = require('../src/tui');
 
 const repoRoot = path.resolve(__dirname, '..');
 
@@ -16,9 +17,16 @@ function tempHome() {
 
 test('discovers character skills from characters directory', () => {
   const characters = discoverCharacters(repoRoot);
+  const expectedNames = fs
+    .readdirSync(path.join(repoRoot, 'characters'))
+    .filter((name) =>
+      fs.existsSync(path.join(repoRoot, 'characters', name, 'SKILL.md')),
+    )
+    .sort();
+
   assert.deepEqual(
-    characters.map((character) => character.name).sort(),
-    ['emilia', 'marin'],
+    characters.map((c) => c.name).sort(),
+    expectedNames,
   );
   for (const character of characters) {
     assert.ok(character.skillPath.endsWith(path.join(character.name, 'SKILL.md')));
@@ -153,6 +161,17 @@ test('installs files, skips existing files, and overwrites with force', () => {
   const third = executeTasks(tasks, { dryRun: false, force: true });
   assert.equal(third.written, 2);
   assert.match(fs.readFileSync(skillDest, 'utf8'), /^---\nname: marin/m);
+});
+
+test('checkboxSelect rejects when stdin is not a TTY', async () => {
+  const items = [
+    { id: 'claude', label: 'Claude Code' },
+    { id: 'codex', label: 'Codex' },
+  ];
+  await assert.rejects(
+    () => checkboxSelect('Pick agents', items),
+    /non-interactive/,
+  );
 });
 
 test('non-interactive mode requires explicit agent and character selections', () => {
