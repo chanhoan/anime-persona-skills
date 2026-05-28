@@ -71,7 +71,7 @@ const BANNER = buildBanner();
 function checkboxSelect(title, items) {
   return new Promise((resolve, reject) => {
     if (!process.stdin.isTTY) {
-      resolve(items.map((item) => item.id));
+      reject(new Error('interactive selection requires a TTY; use --non-interactive with explicit --agent and --character flags'));
       return;
     }
 

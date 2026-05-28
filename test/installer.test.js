@@ -163,18 +163,15 @@ test('installs files, skips existing files, and overwrites with force', () => {
   assert.match(fs.readFileSync(skillDest, 'utf8'), /^---\nname: marin/m);
 });
 
-test('checkboxSelect resolves all items when stdin is not a TTY', async () => {
+test('checkboxSelect rejects when stdin is not a TTY', async () => {
   const items = [
     { id: 'claude', label: 'Claude Code' },
     { id: 'codex', label: 'Codex' },
   ];
-  const result = await checkboxSelect('Pick agents', items);
-  assert.deepEqual(result, ['claude', 'codex']);
-});
-
-test('checkboxSelect resolves empty array when items list is empty (non-TTY)', async () => {
-  const result = await checkboxSelect('Pick agents', []);
-  assert.deepEqual(result, []);
+  await assert.rejects(
+    () => checkboxSelect('Pick agents', items),
+    /non-interactive/,
+  );
 });
 
 test('non-interactive mode requires explicit agent and character selections', () => {
