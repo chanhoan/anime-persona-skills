@@ -7,6 +7,7 @@ const test = require('node:test');
 const { discoverCharacters } = require('../src/catalog');
 const { parseArgs } = require('../src/cli');
 const { buildInstallTasks, executeTasks } = require('../src/install');
+const { checkboxSelect } = require('../src/tui');
 
 const repoRoot = path.resolve(__dirname, '..');
 
@@ -153,6 +154,20 @@ test('installs files, skips existing files, and overwrites with force', () => {
   const third = executeTasks(tasks, { dryRun: false, force: true });
   assert.equal(third.written, 2);
   assert.match(fs.readFileSync(skillDest, 'utf8'), /^---\nname: marin/m);
+});
+
+test('checkboxSelect resolves all items when stdin is not a TTY', async () => {
+  const items = [
+    { id: 'claude', label: 'Claude Code' },
+    { id: 'codex', label: 'Codex' },
+  ];
+  const result = await checkboxSelect('Pick agents', items);
+  assert.deepEqual(result, ['claude', 'codex']);
+});
+
+test('checkboxSelect resolves empty array when items list is empty (non-TTY)', async () => {
+  const result = await checkboxSelect('Pick agents', []);
+  assert.deepEqual(result, []);
 });
 
 test('non-interactive mode requires explicit agent and character selections', () => {
