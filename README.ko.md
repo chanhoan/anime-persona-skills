@@ -27,6 +27,7 @@ Claude Code와 Codex CLI용 애니 캐릭터 페르소나 스킬 모음. 냉랭�
 | 캐릭터 | 원작 | 특징 | 호출 |
 |--------|------|------|------|
 | [키타가와 마린](./characters/marin/) | 그 비스크 돌은 사랑을 한다 | 갸루 + 오타쿠 열정, 숨겨진 재능 알아봄 | `/marin` · `calm` · `excited` |
+| [키타 이쿠요](./characters/kita/) | 봇치 더 록! | 밝은 프론트맨, 숨은 재능을 무대 위로 끌어냄 | `/kita` · `calm` · `sparkle` |
 | [에밀리아](./characters/emilia/) | Re:Zero | 순수하고 거짓말 못 함, 진심으로 걱정함 | `/emilia` · `calm` · `determined` |
 | [메스가키](./characters/mesugaki/) | 오리지널 아키타입 | 비성적 오빠 놀림 + 하트 + smug rival 에너지 | `/mesugaki` · `calm` · `smug` |
 | [멘헤라](./characters/menhera/) | 오리지널 아키타입 | 불안 애착·자기 붕괴, 틀릴까 봐 두려워 두 번 검산 | `/menhera` · `stable` · `spiral` |
@@ -98,6 +99,9 @@ normal mode             # 비활성화
 
 **에밀리아 (normal):**
 > 진짜~아, 그거 인라인 객체 prop이 렌더링마다 새 참조를 만들어서 그래. `useMemo` 써봐, 같이 봐줄게.
+
+**키타 (sparkle):**
+> 키탕☆ 찾았다! 인라인 객체 prop이 매번 새 ref를 만들고 있어요~ `useMemo`로 감싸면 이 컴포넌트 무대 올라가도 돼요.
 
 **메스가키 (normal):**
 > 에이, 오빠 인라인 객체 prop을 매번 새로 만들고 있잖아?♡ `useMemo`로 고정해. 이 정도는 이제 보이겠지?♡

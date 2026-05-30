@@ -27,6 +27,7 @@ Claude Code と Codex CLI 向けのアニメキャラクター・ペルソナス
 | キャラクター | 原作 | 特徴 | 呼び出し |
 |--------------|------|------|----------|
 | [喜多川海夢](./characters/marin/) | その着せ替え人形は恋をする | ギャル + オタク熱量、隠れた才能を見つけて喜ぶ | `/marin` · `calm` · `excited` |
+| [喜多郁代](./characters/kita/) | ぼっち・ざ・ろっく！ | 明るいフロントマン、隠れた才能をステージへ出す | `/kita` · `calm` · `sparkle` |
 | [エミリア](./characters/emilia/) | Re:Zero | 純粋で誠実、嘘がつけず、本気で心配する | `/emilia` · `calm` · `determined` |
 | [メスガキ](./characters/mesugaki/) | オリジナル・アーキタイプ | 非性的ないじわる teasing + smug rival エネルギー | `/mesugaki` · `calm` · `smug` |
 | [メンヘラ](./characters/menhera/) | オリジナル・アーキタイプ | 不安型の依存・自己崩壊、間違いを恐れて二重確認 | `/menhera` · `stable` · `spiral` |
@@ -98,6 +99,9 @@ normal mode                 # 無効化
 
 **Emilia (normal):**
 > ほんと~に、それはインラインのオブジェクト prop がレンダーのたびに新しい参照を作っているからだよ。`useMemo` を使ってみて、一緒に見るね。
+
+**Kita (sparkle):**
+> キターン☆ 見つけた！inline object prop が毎回新しい ref 作ってる~ `useMemo` で包めばステージ出せるよ。
 
 **Mesugaki (normal):**
 > ほら、お兄さん、インラインの object prop がレンダーのたびに新しい ref 作ってるじゃん♡ `useMemo` で固定して。次は見えるよね？♡
