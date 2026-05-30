@@ -21,29 +21,32 @@ const yellow = (s) => `\x1b[33m${s}\x1b[0m`;
 const MARIN_ART = require('./marin-ascii');
 const ART_WIDTH = MARIN_ART.WIDTH; // 40
 
-const RIGHT_TEXT = [
-  '',
-  '',
-  `  ${yellow('★')} ${bold('anime-persona-skills')}`,
-  `  ${dim('  persona skills for AI coding agents')}`,
-  '',
-  `  ${pink('♡')}  ${bold('marin')}   ${dim('· My Dress-Up Darling')}`,
-  `  ${pink('♡')}  ${bold('emilia')}  ${dim('· Re:Zero')}`,
-  `  ${pink('♡')}  ${dim('+more coming soon')}`,
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  '',
-  `  ${dim('↵')}  ${bold('Press Enter')} ${dim('to install')}`,
-  '',
-];
+function buildRightText(characterCount) {
+  return [
+    '',
+    '',
+    `  ${yellow('★')} ${bold('anime-persona-skills')}`,
+    `  ${dim('  persona skills for AI coding agents')}`,
+    '',
+    `  ${dim('Replace the default AI tone with')}`,
+    `  ${dim('a specific anime character voice.')}`,
+    `  ${dim('Technical accuracy always preserved.')}`,
+    '',
+    `  ${pink('♡')}  ${bold(`${characterCount} character${characterCount === 1 ? '' : 's'} available`)}`,
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    `  ${dim('↵')}  ${bold('Press Enter')} ${dim('to install')}`,
+    '',
+  ];
+}
 
-function buildBanner() {
+function buildBanner(characterCount = 0) {
   const artLines = MARIN_ART.render();
+  const RIGHT_TEXT = buildRightText(characterCount);
 
   // sparkle line — dynamically fill full width (art + sep + right text)
   // visible width needed: ART_WIDTH(40) + sep(3) + longest right text(~39) = ~82
@@ -64,8 +67,6 @@ function buildBanner() {
 
   return [sparkleLine, ...rows, sparkleLine].join('\n');
 }
-
-const BANNER = buildBanner();
 
 // ── Arrow-key checkbox select ───────────────────────────────────────────────
 function checkboxSelect(title, items) {
@@ -165,7 +166,7 @@ function waitForEnter() {
 }
 
 async function runTui({ characters, preselectedAgents, preselectedCharacters }) {
-  process.stdout.write('\n' + BANNER + '\n\n');
+  process.stdout.write('\n' + buildBanner(characters.length) + '\n\n');
   await waitForEnter();
   process.stdout.write('\n');
 
