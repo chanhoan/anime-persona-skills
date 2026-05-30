@@ -8,6 +8,9 @@ Anime character persona skills for Claude Code and Codex CLI. Instead of a cold 
 
 ## Changelog
 
+### v0.2.1 — 2026-05-30
+- TUI welcome banner now shows live character count instead of a hardcoded list
+
 ### v0.2.0 — 2026-05-30
 - Added **menhera** original-character persona — anxiously attached, self-collapsing, fear-driven thoroughness with three intensity levels (`stable` / `clingy` / `spiral`)
 - Added **anti-drift hook** (`hooks/anime-persona-tracker.js`) — auto-installed on `npx` so the active persona persists across turns without re-invoking the skill. Auto-discovers new characters from installed SKILL.md files with no code changes needed.
