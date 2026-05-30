@@ -1,6 +1,6 @@
 {
   "name": "anime-persona-skills",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TUI installer for anime persona skills across AI coding agents.",
   "license": "MIT",
   "bin": {
@@ -16,6 +16,7 @@
   "files": [
     "bin/",
     "src/",
+    "hooks/",
     "characters/",
     "README.md",
     "README.ko.md",
