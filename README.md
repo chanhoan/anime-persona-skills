@@ -8,6 +8,9 @@ Anime character persona skills for Claude Code and Codex CLI. Instead of a cold 
 
 ## Changelog
 
+### v0.2.2 — 2026-05-30
+- Added **Ikuyo Kita** persona from *Bocchi the Rock!* — bright frontwoman energy that brings hidden talent to the stage with three intensity levels (`calm` / `normal` / `sparkle`)
+
 ### v0.2.1 — 2026-05-30
 - TUI welcome banner now shows live character count instead of a hardcoded list
 
