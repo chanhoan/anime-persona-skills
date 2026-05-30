@@ -19,7 +19,7 @@ const flagPath  = path.join(claudeDir, '.anime-persona-active');
 
 /**
  * Parse frontmatter block from SKILL.md content.
- * Returns { name, description } or null.
+ * Returns { name, description, triggerPhrases } or null.
  */
 function parseFrontmatter(text) {
   const match = /^---\n([\s\S]*?)\n---/.exec(text);
@@ -30,21 +30,30 @@ function parseFrontmatter(text) {
   if (!nameLine) return null;
   const name = nameLine[1].trim();
 
-  // description may be multi-line (YAML block scalar >)
-  const descMatch = /^description:\s*>?\s*\n([\s\S]*?)(?=\n\S|\n*$)/m.exec(block);
+  // description may be multi-line (YAML block scalar >).
+  // Capture everything from the description key to end of frontmatter block.
+  const descMatch = /^description:\s*>?\s*\n([\s\S]+)/m.exec(block);
   let description = '';
+  let rawDescription = '';
   if (descMatch) {
-    // Collapse indented lines into a single string, take first sentence
-    description = descMatch[1]
+    rawDescription = descMatch[1]
       .split('\n')
       .map(l => l.trim())
       .filter(Boolean)
-      .join(' ')
-      .split(/\.\s/)[0]
-      .trim();
+      .join(' ');
+    description = rawDescription.split(/\.\s/)[0].trim();
   }
 
-  return { name, description };
+  // Extract quoted trigger phrases from description
+  // e.g. "마린처럼", "マリンみたいに", "be marin", "marin mode"
+  const triggerPhrases = [];
+  const quoteRe = /"([^"]+)"/g;
+  let qm;
+  while ((qm = quoteRe.exec(rawDescription)) !== null) {
+    triggerPhrases.push(qm[1]);
+  }
+
+  return { name, description, triggerPhrases };
 }
 
 /**
@@ -103,6 +112,7 @@ function discoverPersonas() {
         personas.set(front.name, {
           name: front.name,
           description: front.description,
+          triggerPhrases: front.triggerPhrases,
           levels,
           defaultLevel: defaultLevel(levels),
           skillPath,
@@ -187,17 +197,18 @@ process.stdin.on('end', () => {
     }
 
     // --- Detect activation ---
-    // Matches: /marin, /marin excited, "marin mode", "be marin", "마린처럼", etc.
+    // Slash command /name [level] OR any trigger phrase from SKILL.md description.
+    // Trigger phrases use includes() — \b word boundaries don't work for Korean/Japanese.
     for (const [name, persona] of personas) {
       const n = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const pattern = new RegExp(
-        `(?:^/${n}(?:\\s+(\\S+))?$|\\b(?:${n}(?:\\s+mode)?|be\\s+${n}|${n}처럼|${n}みたいに)\\b)`,
-        'i'
+      const slashMatch = new RegExp(`^/${n}(?:\\s+(\\S+))?$`, 'i').exec(lower);
+      const phraseHit = !slashMatch && (persona.triggerPhrases || []).some(
+        p => lower.includes(p.toLowerCase())
       );
-      const match = pattern.exec(lower);
-      if (match) {
+
+      if (slashMatch || phraseHit) {
         let level = persona.defaultLevel;
-        const arg = (match[1] || '').toLowerCase();
+        const arg = slashMatch ? (slashMatch[1] || '').toLowerCase() : '';
         if (arg && persona.levels.find(l => l.level === arg)) {
           level = arg;
         } else {

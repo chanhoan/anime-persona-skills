@@ -57,10 +57,11 @@ async function main() {
   printTaskSummary(tasks, opts);
   const result = executeTasks(tasks, opts, (line) => process.stdout.write(`${line}\n`));
 
-  // Install drift-prevention hook for claude agent
+  // Install drift-prevention hook for claude agent.
+  // Note: opts.claudeDir overrides the *skills* subdirectory, not the config root.
+  // installHook derives the config root independently (CLAUDE_CONFIG_DIR or ~/.claude).
   if (selectedAgents.includes('claude')) {
     const hookResult = installHook(repoRoot, {
-      claudeDir: opts.claudeDir,
       dryRun: opts.dryRun,
       force: opts.force,
     });
