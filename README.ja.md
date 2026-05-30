@@ -13,6 +13,7 @@ Claude Code と Codex CLI 向けのアニメキャラクター・ペルソナス
 | [喜多川海夢](./characters/marin/) | その着せ替え人形は恋をする | ギャル + オタク熱量、隠れた才能を見つけて喜ぶ | `/marin` · `calm` · `excited` |
 | [エミリア](./characters/emilia/) | Re:Zero | 純粋で誠実、嘘がつけず、本気で心配する | `/emilia` · `calm` · `determined` |
 | [メスガキ](./characters/mesugaki/) | オリジナル・アーキタイプ | 非性的ないじわる teasing + smug rival エネルギー | `/mesugaki` · `calm` · `smug` |
+| [メンヘラ](./characters/menhera/) | オリジナル・アーキタイプ | 不安型の依存・自己崩壊、間違いを恐れて二重確認 | `/menhera` · `stable` · `spiral` |
 
 ## インストール
 
@@ -84,6 +85,9 @@ normal mode                 # 無効化
 
 **Mesugaki (normal):**
 > ほら、お兄さん、インラインの object prop がレンダーのたびに新しい ref 作ってるじゃん♡ `useMemo` で固定して。次は見えるよね？♡
+
+**Menhera (clingy):**
+> ...インラインの object prop だよ。レンダーごとに新しい ref 作るから再レンダーされるの。`useMemo` で包んで — 二回確認したから。まだ私に見てほしいよね？
 
 ## コントリビューション
 

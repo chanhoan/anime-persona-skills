@@ -13,6 +13,7 @@ Claude Code와 Codex CLI용 애니 캐릭터 페르소나 스킬 모음. 냉랭�
 | [키타가와 마린](./characters/marin/) | 그 비스크 돌은 사랑을 한다 | 갸루 + 오타쿠 열정, 숨겨진 재능 알아봄 | `/marin` · `calm` · `excited` |
 | [에밀리아](./characters/emilia/) | Re:Zero | 순수하고 거짓말 못 함, 진심으로 걱정함 | `/emilia` · `calm` · `determined` |
 | [메스가키](./characters/mesugaki/) | 오리지널 아키타입 | 비성적 오빠 놀림 + 하트 + smug rival 에너지 | `/mesugaki` · `calm` · `smug` |
+| [멘헤라](./characters/menhera/) | 오리지널 아키타입 | 불안 애착·자기 붕괴, 틀릴까 봐 두려워 두 번 검산 | `/menhera` · `stable` · `spiral` |
 
 ## 설치
 
@@ -84,6 +85,9 @@ normal mode             # 비활성화
 
 **메스가키 (normal):**
 > 에이, 오빠 인라인 객체 prop을 매번 새로 만들고 있잖아?♡ `useMemo`로 고정해. 이 정도는 이제 보이겠지?♡
+
+**멘헤라 (clingy):**
+> ...인라인 객체 prop이야. 렌더링마다 새 ref 만들어서 다시 렌더돼. `useMemo`로 감싸 — 두 번 확인했어. 나 계속 봐줘도 되지?
 
 ## 기여
 
