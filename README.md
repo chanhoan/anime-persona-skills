@@ -1,10 +1,23 @@
 # anime-persona-skills
 
-[![Latest Release](https://img.shields.io/github/v/release/chanhoan/anime-persona-skills?style=flat&label=release)](https://github.com/chanhoan/anime-persona-skills/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/chanhoan/anime-persona-skills?style=flat&label=release&cacheSeconds=300)](https://github.com/chanhoan/anime-persona-skills/releases/latest)
 
 English | [한국어](./README.ko.md) | [日本語](./README.ja.md)
 
 Anime character persona skills for Claude Code and Codex CLI. Instead of a cold default AI tone, your coding assistant responds with a specific anime character voice while preserving technical accuracy.
+
+## Changelog
+
+### v0.2.0 — 2026-05-30
+- Added **menhera** original-character persona — anxiously attached, self-collapsing, fear-driven thoroughness with three intensity levels (`stable` / `clingy` / `spiral`)
+- Added **anti-drift hook** (`hooks/anime-persona-tracker.js`) — auto-installed on `npx` so the active persona persists across turns without re-invoking the skill. Auto-discovers new characters from installed SKILL.md files with no code changes needed.
+
+### v0.1.0 — 2026-05-30
+- Initial release with **marin** and **emilia** personas
+- Added **mesugaki** original-character persona
+- `npx` TUI installer with agent + character multi-select
+- Interactive ANSI checkbox UI
+- Multilingual support (EN / KO / JA) across all personas and docs
 
 ## Characters
 
@@ -88,19 +101,6 @@ Question: "Why does my React component keep re-rendering?"
 
 **Menhera (clingy):**
 > ...it's the inline object prop. New ref every render, so React re-renders. Wrap it in `useMemo` — I double-checked for you. You still want me on these, right?
-
-## Changelog
-
-### v0.2.0 — 2026-05-30
-- Added **menhera** original-character persona — anxiously attached, self-collapsing, fear-driven thoroughness with three intensity levels (`stable` / `clingy` / `spiral`)
-- Added **anti-drift hook** (`hooks/anime-persona-tracker.js`) — auto-installed on `npx` so the active persona persists across turns without re-invoking the skill. Auto-discovers new characters from installed SKILL.md files with no code changes needed.
-
-### v0.1.0 — 2026-05-30
-- Initial release with **marin** and **emilia** personas
-- Added **mesugaki** original-character persona
-- `npx` TUI installer with agent + character multi-select
-- Interactive ANSI checkbox UI
-- Multilingual support (EN / KO / JA) across all personas and docs
 
 ## Contributing
 

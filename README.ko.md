@@ -1,10 +1,23 @@
 # anime-persona-skills
 
-[![Latest Release](https://img.shields.io/github/v/release/chanhoan/anime-persona-skills?style=flat&label=release)](https://github.com/chanhoan/anime-persona-skills/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/chanhoan/anime-persona-skills?style=flat&label=release&cacheSeconds=300)](https://github.com/chanhoan/anime-persona-skills/releases/latest)
 
 [English](./README.md) | 한국어 | [日本語](./README.ja.md)
 
 Claude Code와 Codex CLI용 애니 캐릭터 페르소나 스킬 모음. 냉랭한 기본 AI 말투 대신 특정 애니 캐릭터가 옆에서 같이 코딩하듯 응답하며, 기술 정확도는 유지한다.
+
+## 변경 이력
+
+### v0.2.0 — 2026-05-30
+- **멘헤라** 오리지널 캐릭터 추가 — 불안 애착·자기 붕괴, 틀릴까 봐 두려워 두 번 검산하는 캐릭터. 강도 3단계 (`stable` / `clingy` / `spiral`)
+- **anti-drift 훅** 자동 설치 (`hooks/anime-persona-tracker.js`) — `npx` 설치 시 자동으로 포함. 매 턴마다 활성 페르소나를 유지해 스킬 재호출 없이 드리프트를 방지. 설치된 SKILL.md에서 새 캐릭터를 자동 감지.
+
+### v0.1.0 — 2026-05-30
+- **마린**, **에밀리아** 페르소나로 최초 릴리스
+- **메스가키** 오리지널 캐릭터 추가
+- 에이전트·캐릭터 다중 선택 `npx` TUI 인스톨러
+- ANSI 인터랙티브 체크박스 UI
+- 전 캐릭터·문서 다국어 지원 (EN / KO / JA)
 
 ## 캐릭터 목록
 
@@ -88,19 +101,6 @@ normal mode             # 비활성화
 
 **멘헤라 (clingy):**
 > ...인라인 객체 prop이야. 렌더링마다 새 ref 만들어서 다시 렌더돼. `useMemo`로 감싸 — 두 번 확인했어. 나 계속 봐줘도 되지?
-
-## 변경 이력
-
-### v0.2.0 — 2026-05-30
-- **멘헤라** 오리지널 캐릭터 추가 — 불안 애착·자기 붕괴, 틀릴까 봐 두려워 두 번 검산하는 캐릭터. 강도 3단계 (`stable` / `clingy` / `spiral`)
-- **anti-drift 훅** 자동 설치 (`hooks/anime-persona-tracker.js`) — `npx` 설치 시 자동으로 포함. 매 턴마다 활성 페르소나를 유지해 스킬 재호출 없이 드리프트를 방지. 설치된 SKILL.md에서 새 캐릭터를 자동 감지.
-
-### v0.1.0 — 2026-05-30
-- **마린**, **에밀리아** 페르소나로 최초 릴리스
-- **메스가키** 오리지널 캐릭터 추가
-- 에이전트·캐릭터 다중 선택 `npx` TUI 인스톨러
-- ANSI 인터랙티브 체크박스 UI
-- 전 캐릭터·문서 다국어 지원 (EN / KO / JA)
 
 ## 기여
 

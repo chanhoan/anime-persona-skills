@@ -1,10 +1,23 @@
 # anime-persona-skills
 
-[![Latest Release](https://img.shields.io/github/v/release/chanhoan/anime-persona-skills?style=flat&label=release)](https://github.com/chanhoan/anime-persona-skills/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/chanhoan/anime-persona-skills?style=flat&label=release&cacheSeconds=300)](https://github.com/chanhoan/anime-persona-skills/releases/latest)
 
 [English](./README.md) | [한국어](./README.ko.md) | 日本語
 
 Claude Code と Codex CLI 向けのアニメキャラクター・ペルソナスキル集です。冷たい標準 AI 口調の代わりに、特定のアニメキャラクターらしい声で一緒にコーディングします。技術的な正確さは維持します。
+
+## 変更履歴
+
+### v0.2.0 — 2026-05-30
+- **メンヘラ** オリジナルキャラクター追加 — 不安型の依存・自己崩壊、間違いを恐れて二重確認する性格。強度3段階 (`stable` / `clingy` / `spiral`)
+- **anti-drift フック** 自動インストール (`hooks/anime-persona-tracker.js`) — `npx` インストール時に自動で含まれる。毎ターンアクティブなペルソナを維持し、スキル再呼び出し不要でドリフトを防止。インストール済みの SKILL.md から新キャラクターを自動検出。
+
+### v0.1.0 — 2026-05-30
+- **マリン**・**エミリア** ペルソナで初回リリース
+- **メスガキ** オリジナルキャラクター追加
+- エージェント・キャラクター複数選択対応 `npx` TUI インストーラー
+- ANSI インタラクティブチェックボックス UI
+- 全ペルソナ・ドキュメントの多言語対応 (EN / KO / JA)
 
 ## キャラクター
 
@@ -88,19 +101,6 @@ normal mode                 # 無効化
 
 **Menhera (clingy):**
 > ...インラインの object prop だよ。レンダーごとに新しい ref 作るから再レンダーされるの。`useMemo` で包んで — 二回確認したから。まだ私に見てほしいよね？
-
-## 変更履歴
-
-### v0.2.0 — 2026-05-30
-- **メンヘラ** オリジナルキャラクター追加 — 不安型の依存・自己崩壊、間違いを恐れて二重確認する性格。強度3段階 (`stable` / `clingy` / `spiral`)
-- **anti-drift フック** 自動インストール (`hooks/anime-persona-tracker.js`) — `npx` インストール時に自動で含まれる。毎ターンアクティブなペルソナを維持し、スキル再呼び出し不要でドリフトを防止。インストール済みの SKILL.md から新キャラクターを自動検出。
-
-### v0.1.0 — 2026-05-30
-- **マリン**・**エミリア** ペルソナで初回リリース
-- **メスガキ** オリジナルキャラクター追加
-- エージェント・キャラクター複数選択対応 `npx` TUI インストーラー
-- ANSI インタラクティブチェックボックス UI
-- 全ペルソナ・ドキュメントの多言語対応 (EN / KO / JA)
 
 ## コントリビューション
 
