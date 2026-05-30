@@ -6,6 +6,7 @@ const path = require('node:path');
 const { discoverCharacters } = require('../src/catalog');
 const { parseArgs, usage } = require('../src/cli');
 const { buildInstallTasks, executeTasks } = require('../src/install');
+const { installHook } = require('../src/hooks');
 const { AGENTS } = require('../src/providers');
 const { runTui } = require('../src/tui');
 
@@ -55,6 +56,24 @@ async function main() {
 
   printTaskSummary(tasks, opts);
   const result = executeTasks(tasks, opts, (line) => process.stdout.write(`${line}\n`));
+
+  // Install drift-prevention hook for claude agent
+  if (selectedAgents.includes('claude')) {
+    const hookResult = installHook(repoRoot, {
+      claudeDir: opts.claudeDir,
+      dryRun: opts.dryRun,
+      force: opts.force,
+    });
+    if (opts.dryRun) {
+      process.stdout.write('would write ~/.claude/hooks/anime-persona-tracker.js\n');
+      process.stdout.write('would patch ~/.claude/settings.json (UserPromptSubmit hook)\n');
+    } else {
+      if (hookResult.hookWritten) process.stdout.write('wrote hook: anime-persona-tracker.js\n');
+      if (hookResult.hookSkipped) process.stdout.write('skip existing hook: anime-persona-tracker.js\n');
+      if (hookResult.settingsPatched) process.stdout.write('patched settings.json: UserPromptSubmit hook registered\n');
+    }
+  }
+
   process.stdout.write(
     `\nDone. planned=${result.planned} written=${result.written} skipped=${result.skipped}\n`,
   );

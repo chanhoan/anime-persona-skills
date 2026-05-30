@@ -7,6 +7,7 @@ const test = require('node:test');
 const { discoverCharacters } = require('../src/catalog');
 const { parseArgs } = require('../src/cli');
 const { buildInstallTasks, executeTasks } = require('../src/install');
+const { installHook } = require('../src/hooks');
 const { checkboxSelect } = require('../src/tui');
 
 const repoRoot = path.resolve(__dirname, '..');
@@ -179,4 +180,52 @@ test('non-interactive mode requires explicit agent and character selections', ()
     () => parseArgs(['--non-interactive']),
     /requires --agent\/--all-agents and --character\/--all-characters/,
   );
+});
+
+test('installHook copies hook script and patches settings.json', () => {
+  const home = tempHome();
+  const claudeDir = path.join(home, '.claude');
+  const result = installHook(repoRoot, { claudeDir, dryRun: false, force: false });
+
+  assert.ok(result.hookWritten, 'hook file should be written');
+  assert.ok(result.settingsPatched, 'settings.json should be patched');
+
+  const hookDest = path.join(claudeDir, 'hooks', 'anime-persona-tracker.js');
+  assert.ok(fs.existsSync(hookDest), 'hook file exists at destination');
+
+  const settings = JSON.parse(fs.readFileSync(path.join(claudeDir, 'settings.json'), 'utf8'));
+  const entries = settings.hooks?.UserPromptSubmit ?? [];
+  const registered = entries.some((e) =>
+    (e.hooks ?? []).some((h) => h.command?.includes('anime-persona-tracker')),
+  );
+  assert.ok(registered, 'UserPromptSubmit hook registered in settings.json');
+});
+
+test('installHook is idempotent: skips existing hook and does not duplicate settings entry', () => {
+  const home = tempHome();
+  const claudeDir = path.join(home, '.claude');
+
+  installHook(repoRoot, { claudeDir, dryRun: false, force: false });
+  const second = installHook(repoRoot, { claudeDir, dryRun: false, force: false });
+
+  assert.ok(second.hookSkipped, 'second run should skip existing hook file');
+  assert.ok(!second.settingsPatched, 'second run should not patch settings again');
+
+  const settings = JSON.parse(fs.readFileSync(path.join(claudeDir, 'settings.json'), 'utf8'));
+  const entries = settings.hooks?.UserPromptSubmit ?? [];
+  const count = entries.filter((e) =>
+    (e.hooks ?? []).some((h) => h.command?.includes('anime-persona-tracker')),
+  ).length;
+  assert.equal(count, 1, 'only one UserPromptSubmit entry should exist');
+});
+
+test('installHook dry-run writes nothing', () => {
+  const home = tempHome();
+  const claudeDir = path.join(home, '.claude');
+  const result = installHook(repoRoot, { claudeDir, dryRun: true, force: false });
+
+  assert.ok(result.hookWritten, 'dry-run reports hookWritten=true');
+  assert.ok(result.settingsPatched, 'dry-run reports settingsPatched=true');
+  assert.ok(!fs.existsSync(path.join(claudeDir, 'hooks', 'anime-persona-tracker.js')), 'no file written in dry-run');
+  assert.ok(!fs.existsSync(path.join(claudeDir, 'settings.json')), 'no settings.json written in dry-run');
 });
